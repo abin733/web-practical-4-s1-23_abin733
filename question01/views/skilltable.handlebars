@@ -1,0 +1,24 @@
+{{!-- id, first_name, last_name, country, gender, skill, years_experience --}}
+<div class="container">
+    <h1>Skills:</h1>
+    <table>
+            <th>ID</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>country</th>
+            <th>gender</th>
+            <th>skill</th>
+            <th>years_experience</th>
+        {{#each animals}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.first_name}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.country}}</td>
+            <td>{{this.gender}}</td>
+            <td>{{this.skill}}</td>
+            <td>{{this.years_experience}} Years</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
