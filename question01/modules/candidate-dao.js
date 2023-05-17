@@ -27,6 +27,20 @@ async function getByYears(yearLow,yearHigh){
     return yearsArray;
 }
 
+async function getByYearsCountry(yearLow,country){
+
+    console.log("call getByYears function in candidate-dao.js");
+    const db = await dbPromise;
+
+    const countryArray = await db.all(SQL`
+        SELECT * FROM CANDIDATE_DATA 
+            WHERE years_experience > ${yearLow}
+                AND country = "${country}"
+    `)
+    console.log(JSON.stringify(countryArray));
+    return countryArray;
+}
+
 async function getAllCountries(){
 
     console.log("call getAllCountries function in candidate-dao.js");
@@ -43,6 +57,7 @@ async function getAllCountries(){
 module.exports = {
     getBySkill,
     getByYears,
+    getByYearsCountry,
     getAllCountries
 };
 

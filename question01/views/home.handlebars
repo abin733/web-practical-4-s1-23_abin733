@@ -17,16 +17,17 @@
     </form>
 </section>
 <section>
-    <h1>Get candidate by country:</h1>
-    <form action="./getskill" method="GET">
+    <h1>Get candidate by country and minimum years of experience:</h1>
+    <form action="./getcountry" method="GET">
             <label for="country">Country</label>
             <select name="country" id="country">
                 {{#each countries}}
-                <option value={{this}}>{{this}}</option>
+                <option value={{this.country}}>{{this.country}}</option>
                 {{/each}}
             </select>
+            <label for="yearLow">Lowest:</label>
+            <input type="text" name="yearLow">            
             <br>
-            <input type="submit" value="Submit" />
         <button type="submit">Get</button>
     </form>
 </section>
