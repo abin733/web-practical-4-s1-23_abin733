@@ -5,7 +5,8 @@ const candidateDao = require("../modules/candidate-dao.js");
 
 // Whenever we navigate to /, render the home view.
 router.get("/", async function(req, res) {
-    res.render("home");
+    const uniqueCountries = getUniqueCountries().sort();
+    res.render("home",{countries: uniqueCountries});
 });
 
 router.get("/getskill", async function(req,res){
@@ -20,7 +21,7 @@ router.get("/getskill", async function(req,res){
 });
 
 router.get("/getyear", async function(req,res){
-    console.log("Get year call init");
+    console.log("Get year call init ");
     const yearLow = req.query.yearLow;
     const yearHigh = req.query.yearHigh;   
     console.log(yearLow + "-:Git:>" + yearHigh);
@@ -30,5 +31,11 @@ router.get("/getyear", async function(req,res){
     res.locals.years = yearsArray;
     res.render("years");
 });
+
+function getUniqueCountries() {
+
+    const countries = candidateDao.getAllCountries();
+    return [...new Set(countries)];
+}
 
 module.exports = router;
