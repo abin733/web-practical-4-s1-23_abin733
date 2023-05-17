@@ -29,10 +29,11 @@ async function getByYears(yearLow,yearHigh){
 
 async function getByYearsCountry(yearLow,country){
 
-    console.log("call getByYears function in candidate-dao.js");
-    const countryName = `"'"+ ${country} +"'"`;
+    console.log("call getByYearsCountry function in candidate-dao.js");
+    const countryName = "'"+ country +"'";
     const db = await dbPromise;
-    console.log(`SELECT * FROM CANDIDATE_DATA WHERE years_experience > ${yearLow} AND country = "${country}"`);
+    console.log(`SELECT * FROM CANDIDATE_DATA 
+    WHERE years_experience > ${yearLow} AND country = ${countryName}`);
     const countryArray = await db.all(SQL`SELECT * FROM CANDIDATE_DATA 
     WHERE years_experience > ${yearLow} AND country = ${countryName}`)
     console.log(JSON.stringify(countryArray));
