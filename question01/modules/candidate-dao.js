@@ -3,11 +3,11 @@ const dbPromise = require("./database.js");
 
 async function getSkillsByName(name){
 
-    console.log("call getSkillsByName fucntion in animals-dao.js");
+    console.log("call getSkillsByName fucntion in candidate-dao.js");
     const db = await dbPromise;
 
     const skillsArray = await db.all(SQL`
-        SELECT * FROM ANIMAL_DATA
+        SELECT * FROM CANDIDATE_DATA
             WHERE skill = ${name}
     `)
     console.log(JSON.stringify(skillsArray));

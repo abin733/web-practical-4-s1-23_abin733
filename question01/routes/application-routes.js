@@ -11,13 +11,12 @@ router.get("/", async function(req, res) {
 router.get("/getskill", async function(req,res){
     console.log("Get skill call init");
     const skillName = req.query.skill;
-    console.log("Git:" + animalName);
+    console.log("Git:" + skillName);
     // TODO: call data access function with animalName as paraemeter and return that array of matching animal objects
-    const skillsArray = await candidateDao.
-    console.log("Animal data:" + JSON.stringify(animalsArray));
-    res.locals.animals = animalsArray;
-    res.render("animals");
-
+    const skillsArray = await candidateDao.getSkillsByName(skillName);
+    console.log("Skills data:" + JSON.stringify(skillsArray));
+    res.locals.skills = skillsArray;
+    res.render("skills");
 });
 
 module.exports = router;
