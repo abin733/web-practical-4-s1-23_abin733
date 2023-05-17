@@ -34,8 +34,8 @@ router.get("/getyear", async function(req,res){
 
 function getUniqueCountries() {
 
-    const countries = candidateDao.getAllCountries();
-    return [...new Set(countries)];
+    const allcountries = candidateDao.getAllCountries();
+    return allcountries;
 }
 
 module.exports = router;
