@@ -13,10 +13,22 @@ router.get("/getskill", async function(req,res){
     const skillName = req.query.skill;
     console.log("Git:" + skillName);
     // TODO: call data access function with animalName as paraemeter and return that array of matching animal objects
-    const skillsArray = await candidateDao.getSkillsByName(skillName);
+    const skillsArray = await candidateDao.getBySkill(skillName);
     console.log("Skills data:" + JSON.stringify(skillsArray));
     res.locals.skills = skillsArray;
     res.render("skills");
+});
+
+router.get("/getyear", async function(req,res){
+    console.log("Get year call init");
+    const yearLow = req.query.yearLow;
+    const yearHigh = req.query.yearHigh;   
+    console.log(yearLow + "-:Git:>" + yearHigh);
+    // TODO: call data access function with animalName as paraemeter and return that array of matching animal objects
+    const yearsArray = await candidateDao.getByYears(yearLow,yearHigh);
+    console.log("Years data:" + JSON.stringify(yearsArray));
+    res.locals.years = yearsArray;
+    res.render("years");
 });
 
 module.exports = router;
