@@ -27,9 +27,22 @@ async function getByYears(yearLow,yearHigh){
     return yearsArray;
 }
 
+function getAllCountries(){
+
+    console.log("call getAllCountries function in candidate-dao.js");
+    const db = dbPromise;
+
+    const allcountries = db.get(SQL`
+    SELECT DISTINCT country FROM CANDIDATE_DATA
+    `)
+    console.log(JSON.stringify(allcountries));
+    return allcountries;
+}
+
 // Export functions.
 module.exports = {
     getBySkill,
-    getByYears
+    getByYears,
+    getAllCountries
 };
 
