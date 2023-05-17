@@ -5,8 +5,9 @@ const candidateDao = require("../modules/candidate-dao.js");
 
 // Whenever we navigate to /, render the home view.
 router.get("/", async function(req, res) {
-    const uniqueCountries = getUniqueCountries().sort();
-    res.render("home",{countries: uniqueCountries});
+    const uniqueCountries = await getUniqueCountries();
+    res.locals.countries = uniqueCountries;
+    res.render("home");
 });
 
 router.get("/getskill", async function(req,res){
@@ -30,6 +31,18 @@ router.get("/getyear", async function(req,res){
     console.log("Years data:" + JSON.stringify(yearsArray));
     res.locals.years = yearsArray;
     res.render("years");
+});
+
+router.get("/getcountry", async function(req,res){
+    console.log("Get country call init ");
+    const yearLow = req.query.yearLow;
+    const country = req.query.country;   
+    console.log(yearLow + "-:Git: from " + country);
+    // TODO: call data access function with animalName as paraemeter and return that array of matching animal objects
+    const countryArray = await candidateDao.getByYearsCountry(yearLow,country);
+    console.log("Years data:" + JSON.stringify(countryArray));
+    res.locals.countries = countryArray;
+    res.render("countries");
 });
 
 function getUniqueCountries() {
