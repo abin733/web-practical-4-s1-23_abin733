@@ -1,8 +1,18 @@
 <section>
-    <h1>Get skill by name:</h1>
+    <h1>Get candidate by skill:</h1>
     <form action="./getskill" method="GET">
-        <label for="skill">Please enter a skill by name:</label>
+        <label for="skill">Please enter a skill:</label>
         <input type="text" name="skill">
+        <button type="submit">Get</button>
+    </form>
+</section>
+<section>
+    <h1>Get candidate by years of experience:</h1>
+    <form action="./getyear" method="GET">
+        <label for="skill">Lowest:</label>
+        <input type="number" name="yearLow">
+        <label for="skill">Highest:</label>
+        <input type="number" name="yearHigh">
         <button type="submit">Get</button>
     </form>
 </section>
