@@ -32,7 +32,7 @@ function getAllCountries(){
     console.log("call getAllCountries function in candidate-dao.js");
     const db = dbPromise;
 
-    const allcountries = db.get(SQL`
+    const allcountries = db.all(SQL`
     SELECT DISTINCT country FROM CANDIDATE_DATA
     `)
     console.log(JSON.stringify(allcountries));
